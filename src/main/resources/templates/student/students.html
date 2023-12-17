@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Список студентов</title>
+</head>
+<body>
+<h2>Список студентов</h2>
+
+<!-- Используем Thymeleaf для итерации по списку студентов -->
+<div th:each="student : ${students}">
+    <!-- Используем Thymeleaf для вывода информации о студенте через запятую -->
+    <p th:text="${ student.firstName + ', ' + student.lastName + ', faculty ' +  student.faculty + ', group ' + student.group}"></p>
+</div>
+</body>
+</html>

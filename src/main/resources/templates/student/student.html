@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Информация о студенте</title>
+</head>
+<body>
+<h2>Информация о студенте</h2>
+
+<!-- Используем Thymeleaf для вывода информации о студенте -->
+<p th:text="'Имя: ' + ${firstName}"></p>
+<p th:text="'Фамилия: ' + ${lastName}"></p>
+<p th:text="'Факультет: ' + ${faculty}"></p>
+<p th:text="'Группа: ' + ${group}"></p>
+</body>
+</html>
