@@ -2,16 +2,15 @@ package com.example.studentcrm9.database.entity;
 
 import com.example.studentcrm9.database.enums.Role;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
+@ToString(exclude = "student")
+@EqualsAndHashCode(exclude = "student")
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

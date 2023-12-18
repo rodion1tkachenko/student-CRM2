@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -23,6 +24,10 @@ public class StudentService {
     }
 
     public List<Student> findGroupMates(Student student) {
-        return studentRepository.findAllByFacultyAndGroup(student.getFaculty(),student.getGroup());
+        return studentRepository.findAllByFacultyAndGroup(student.getFaculty(),student.getGroup())
+                .stream()
+                .filter(object-> !student.equals(object))
+                .distinct()
+                .collect(Collectors.toList());
     }
 }

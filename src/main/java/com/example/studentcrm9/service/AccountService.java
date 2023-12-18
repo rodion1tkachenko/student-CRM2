@@ -24,6 +24,7 @@ public class AccountService {
 
     @Transactional
     public boolean saveAccount(Account account) {
+        account.getStudent().setAccount(account);
         return accountRepository.saveAccount(account);
     }
 }

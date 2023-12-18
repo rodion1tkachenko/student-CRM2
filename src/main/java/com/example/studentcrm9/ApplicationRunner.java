@@ -21,7 +21,6 @@ public class ApplicationRunner {
         ConfigurableApplicationContext context = SpringApplication.run(ApplicationRunner.class, args);
         StudentService studentService = context.getBean(StudentService.class);
         studentService.findGroupMates(studentService.findById(3L).get())
-                .stream()
                 .forEach(System.out::println);
 
     }

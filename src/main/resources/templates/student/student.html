@@ -12,5 +12,9 @@
 <p th:text="'Фамилия: ' + ${lastName}"></p>
 <p th:text="'Факультет: ' + ${faculty}"></p>
 <p th:text="'Группа: ' + ${group}"></p>
+<h2>список одногруппников:</h2>
+<div th:each="groupmate : ${groupMates}">
+<a th:href="@{'/students/' + ${groupmate.getId()}}" th:text="|${groupmate.getFirstName()}, ${groupmate.lastName}|">User</a>
+</div>
 </body>
 </html>

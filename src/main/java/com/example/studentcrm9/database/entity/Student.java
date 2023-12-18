@@ -8,6 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(exclude = "account")
+@EqualsAndHashCode(exclude = "account")
 @Builder
 @Entity
 public class Student {
