@@ -39,16 +39,10 @@ public class StudentController {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)
                 );
     }
-
-    private void setGroupMateAttribute(Model model, Student student) {
-        model.addAttribute("groupMates", studentService.findGroupMates(student));
-    }
-
-    private void setStudentAttributes(Model model, Student student) {
-        model.addAttribute("firstName", student.getFirstName());
-        model.addAttribute("lastName", student.getLastName());
-        model.addAttribute("faculty", student.getFaculty());
-        model.addAttribute("group", student.getGroup());
+    @PostMapping
+    public String findByStudentId(@ModelAttribute Student student ){
+//        studentService.updateStudentById(student);
+        return "student/student";
     }
 
     @GetMapping("/registration")
@@ -60,17 +54,21 @@ public class StudentController {
     }
 
     @PostMapping("/registration")
-    public String registration(@ModelAttribute Account account,Model model) {
+    public String registration(@ModelAttribute Account account, RedirectAttributes redirectAttributes) {
         accountService.saveAccount(account);
-        return studentService.findById(account.getId())
-                .map(student -> {
-                    setStudentAttributes(model, student);
-                    setGroupMateAttribute(model, student);
-                    return "students/student";
-                }).orElseThrow(
-                        () -> new ResponseStatusException(HttpStatus.NOT_FOUND)
-                );
+        return "redirect:/students/"+account.getStudent().getId();
 
+    }
+
+    private void setGroupMateAttribute(Model model, Student student) {
+        model.addAttribute("groupMates", studentService.findGroupMates(student));
+    }
+
+    private void setStudentAttributes(Model model, Student student) {
+        model.addAttribute("firstName", student.getFirstName());
+        model.addAttribute("lastName", student.getLastName());
+        model.addAttribute("faculty", student.getFaculty());
+        model.addAttribute("group", student.getGroup());
     }
 
 }

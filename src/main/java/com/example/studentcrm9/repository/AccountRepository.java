@@ -14,4 +14,5 @@ public interface AccountRepository extends JpaRepository<Account,Long> {
         save(account);
         return true;
     }
+    Optional<Account> getAccountByLoginAndPassword( String login,String password);
 }

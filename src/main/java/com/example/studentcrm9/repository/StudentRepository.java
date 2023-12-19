@@ -16,4 +16,5 @@ public interface StudentRepository extends CrudRepository<Student,Long> {
     List<Student> findAllByFaculty(Faculty faculty);
     List<Student> findAllByFacultyAndGroup(Faculty faculty, Integer group);
 
+
 }

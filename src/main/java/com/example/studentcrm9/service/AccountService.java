@@ -14,9 +14,15 @@ import java.util.Optional;
 public class AccountService {
     private final AccountRepository accountRepository;
 
+    public Optional<Account> checkAccount(String login, String password) {
+        Optional<Account> maybeAccount = accountRepository.getAccountByLoginAndPassword(login, password);
+        return maybeAccount;
+    }
+
     public Optional<Account> getAccountById(Long id) {
         return accountRepository.getAccountById(id);
     }
+
     @Transactional
     public void deleteAccountByLogin(String login) {
         accountRepository.deleteAccountByLogin(login);

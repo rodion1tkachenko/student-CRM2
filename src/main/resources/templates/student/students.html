@@ -10,7 +10,11 @@
 <!-- Используем Thymeleaf для итерации по списку студентов -->
 <div th:each="student : ${students}">
     <!-- Используем Thymeleaf для вывода информации о студенте через запятую -->
-    <p th:text="${ student.firstName + ', ' + student.lastName + ', faculty ' +  student.faculty + ', group ' + student.group}"></p>
+    <p>
+        <a th:href="@{'/students/' + ${student.id}}">
+            <span th:text="${ student.firstName + ', ' + student.lastName + ', faculty ' +  student.faculty + ', group ' + student.group}"></span>
+        </a>
+    </p>
 </div>
 </body>
 </html>
