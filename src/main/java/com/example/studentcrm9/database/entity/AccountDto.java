@@ -16,5 +16,4 @@ import org.springframework.stereotype.Component;
 public class AccountDto {
     private String login;
     private String password;
-    private Role role;
 }

@@ -59,12 +59,17 @@ public class StudentController {
         return "redirect:/students/"+account.getStudent().getId();
 
     }
+    @GetMapping("/{id}/update")
+    public String updateStudent(@PathVariable("id") Long id){
+        return "update/updateStudent";
+    }
 
-    private void setGroupMateAttribute(Model model, Student student) {
+    public void setGroupMateAttribute(Model model, Student student) {
         model.addAttribute("groupMates", studentService.findGroupMates(student));
     }
 
-    private void setStudentAttributes(Model model, Student student) {
+    public void setStudentAttributes(Model model, Student student) {
+        model.addAttribute("student", student);
         model.addAttribute("firstName", student.getFirstName());
         model.addAttribute("lastName", student.getLastName());
         model.addAttribute("faculty", student.getFaculty());

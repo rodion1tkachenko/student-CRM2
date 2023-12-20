@@ -15,8 +15,7 @@ public class AccountService {
     private final AccountRepository accountRepository;
 
     public Optional<Account> checkAccount(String login, String password) {
-        Optional<Account> maybeAccount = accountRepository.getAccountByLoginAndPassword(login, password);
-        return maybeAccount;
+        return accountRepository.getAccountByLoginAndPassword(login, password);
     }
 
     public Optional<Account> getAccountById(Long id) {

@@ -7,17 +7,20 @@
 <body>
 <h2>Информация о студенте</h2>
 
-<form action="#" th:object="${student}" method="post">
-    <p>Имя: <input type="text" th:field="${firstName}" /></p>
-    <p>Фамилия: <input type="text" th:field="${lastName}" /></p>
-    <p>Факультет: <input type="text" th:field="${faculty}" /></p>
-    <p>Группа: <input type="text" th:field="${group}" /></p>
-    <button type="submit">Обновить</button>
+<!-- Используем Thymeleaf для вывода информации о студенте -->
+<p th:text="'Имя: ' + ${student.getFirstName()}"></p>
+<p th:text="'Фамилия: ' + ${student.getLastName()}"></p>
+<p th:text="'Факультет: ' + ${student.getFaculty()}"></p>
+<p th:text="'Группа: ' + ${student.getGroup()}"></p>
+
+<!-- Добавляем кнопку UPDATE -->
+<form th:action="@{'/students/' + ${student.getId()}+'/update'}" method="get">
+    <button type="submit">UPDATE</button>
 </form>
 
 <h2>список одногруппников:</h2>
 <div th:each="groupmate : ${groupMates}">
-    <a th:href="@{'/students/' + ${groupmate.id}}" th:text="${groupmate.firstName + ', ' + groupmate.lastName}">User</a>
+    <a th:href="@{'/students/' + ${groupmate.getId()}}" th:text="|${groupmate.getFirstName()}, ${groupmate.getLastName()}|">User</a>
 </div>
 </body>
 </html>
