@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.server.ResponseStatusException;
@@ -54,8 +56,18 @@ public class StudentController {
     }
 
     @PostMapping("/registration")
-    public String registration(@ModelAttribute Account account, RedirectAttributes redirectAttributes) {
+    public String registration(@Validated @ModelAttribute Account account,
+                               BindingResult bindingResult,
+                               RedirectAttributes redirectAttributes) {
+        if(bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("account",account);
+            redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
+
+            return "redirect:/students/registration";
+        }
+
         accountService.saveAccount(account);
+
         return "redirect:/students/"+account.getStudent().getId();
 
     }
