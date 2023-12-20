@@ -14,6 +14,7 @@ import java.util.Optional;
 public class AccountService {
     private final AccountRepository accountRepository;
 
+
     public Optional<Account> checkAccount(String login, String password) {
         return accountRepository.getAccountByLoginAndPassword(login, password);
     }

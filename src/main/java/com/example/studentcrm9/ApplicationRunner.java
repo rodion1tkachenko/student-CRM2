@@ -20,8 +20,6 @@ public class ApplicationRunner {
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(ApplicationRunner.class, args);
         StudentService studentService = context.getBean(StudentService.class);
-        studentService.findGroupMates(studentService.findById(3L).get())
-                .forEach(System.out::println);
 
     }
 

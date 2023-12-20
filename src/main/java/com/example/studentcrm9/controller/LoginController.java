@@ -3,6 +3,7 @@ package com.example.studentcrm9.controller;
 import com.example.studentcrm9.database.entity.Account;
 import com.example.studentcrm9.database.entity.AccountDto;
 import com.example.studentcrm9.database.entity.Student;
+import com.example.studentcrm9.database.enums.Role;
 import com.example.studentcrm9.service.AccountService;
 import com.example.studentcrm9.service.StudentService;
 import lombok.RequiredArgsConstructor;
@@ -27,17 +28,21 @@ public class LoginController {
     public String loginPage(Model model) {
         return "/login/login";
     }
-
+//TODO: a lot of logic here, move to service layer
     @PostMapping
     public String login(Model model, @ModelAttribute("account") AccountDto accountDto) {
          return accountService.checkAccount(accountDto.getLogin(), accountDto.getPassword())
                 .map(obj -> {
-//                            Account account=obj;
-                            Student student = obj.getStudent();
-                            studentController.setStudentAttributes(model, student);
-                            studentController.setGroupMateAttribute(model, student);
-                            return "redirect:/students/" + student.getId();
-                        }).orElseThrow(
+                    if (obj.getRole().equals(Role.USER)) {
+                        Student student = obj.getStudent();
+                        studentController.setStudentAttributes(model, student);
+                        studentController.setGroupMateAttribute(model, student);
+                        return "redirect:/students/" + student.getId();
+                    }
+                    else{
+                        return "redirect:/admin";
+                    }
+                }).orElseThrow(
                                 NoSuchElementException::new
                 );
 //                ifPresent(obj -> {
