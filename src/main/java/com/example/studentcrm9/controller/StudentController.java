@@ -6,6 +6,7 @@ import com.example.studentcrm9.database.enums.Faculty;
 import com.example.studentcrm9.database.enums.Role;
 import com.example.studentcrm9.service.AccountService;
 import com.example.studentcrm9.service.StudentService;
+import jakarta.validation.groups.Default;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -49,6 +50,7 @@ public class StudentController {
 
     @GetMapping("/registration")
     public String registration(Model model, @ModelAttribute("account") Account account) {
+
         model.addAttribute("account", account);
         model.addAttribute("roles", Role.values());
         model.addAttribute("faculties", Faculty.values());
@@ -56,11 +58,11 @@ public class StudentController {
     }
 
     @PostMapping("/registration")
-    public String registration(@Validated @ModelAttribute Account account,
+    public String registration(@Validated(Default.class) @ModelAttribute Account account,
                                BindingResult bindingResult,
                                RedirectAttributes redirectAttributes) {
         if(bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute("account",account);
+//            redirectAttributes.addFlashAttribute("account",account);
             redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
 
             return "redirect:/students/registration";

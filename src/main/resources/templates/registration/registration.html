@@ -23,5 +23,8 @@
     <p>Last Name: <input type="text" th:field="*{student.lastName}" /></p>
     <p><input type="submit" value="Register" /></p>
 </form>
+<div th:if="${errors}">
+    <p style="color: red" th:each="error : ${errors}" th:text="${error.defaultMessage}">Error message</p>
+</div>
 </body>
 </html>
