@@ -22,7 +22,6 @@ public class Account {
     @Column(name = "login", unique = true, nullable = false, length = 64)
     @Email
     private String login;
-    @Size(min = 3, max = 64)
     @Column(name = "password", nullable = false, length = 64)
     private String password;
 

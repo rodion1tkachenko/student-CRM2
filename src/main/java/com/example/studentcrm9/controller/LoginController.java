@@ -30,8 +30,8 @@ public class LoginController {
     }
 //TODO: a lot of logic here, move to service layer
     @PostMapping
-    public String login(Model model, @ModelAttribute("account") AccountDto accountDto) {
-         return accountService.checkAccount(accountDto.getLogin(), accountDto.getPassword())
+    public String login(Model model, @ModelAttribute("account") Account account) {
+         return accountService.checkAccount(account.getLogin(), account.getPassword())
                 .map(obj -> {
                     if (obj.getRole().equals(Role.USER)) {
                         Student student = obj.getStudent();

@@ -4,6 +4,7 @@ import com.example.studentcrm9.database.entity.Account;
 import com.example.studentcrm9.database.entity.Student;
 import com.example.studentcrm9.database.enums.Faculty;
 import com.example.studentcrm9.database.enums.Role;
+import com.example.studentcrm9.dto.RegistrationDto;
 import com.example.studentcrm9.service.AccountService;
 import com.example.studentcrm9.service.StudentService;
 import jakarta.validation.groups.Default;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -49,28 +52,25 @@ public class StudentController {
     }
 
     @GetMapping("/registration")
-    public String registration(Model model, @ModelAttribute("account") Account account) {
+    public String registration(Model model, @ModelAttribute("registrationDto") RegistrationDto registrationDto) {
 
-        model.addAttribute("account", account);
+        model.addAttribute("registrationDto", registrationDto);
         model.addAttribute("roles", Role.values());
         model.addAttribute("faculties", Faculty.values());
         return "registration/registration";
     }
 
     @PostMapping("/registration")
-    public String registration(@Validated(Default.class) @ModelAttribute Account account,
+    public String registration(@Validated(Default.class) @ModelAttribute("registrationDto") RegistrationDto registrationDto,
                                BindingResult bindingResult,
                                RedirectAttributes redirectAttributes) {
         if(bindingResult.hasErrors()) {
-//            redirectAttributes.addFlashAttribute("account",account);
+            redirectAttributes.addFlashAttribute("registrationDto",registrationDto);
             redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
-
             return "redirect:/students/registration";
         }
-
-        accountService.saveAccount(account);
-
-        return "redirect:/students/"+account.getStudent().getId();
+        Optional<Account> account = accountService.saveAccount(registrationDto);
+        return "redirect:/students/"+account.get().getStudent().getId();
 
     }
     @GetMapping("/{id}/update")

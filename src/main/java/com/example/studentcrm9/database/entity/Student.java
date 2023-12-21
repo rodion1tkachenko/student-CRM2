@@ -21,21 +21,18 @@ public class Student {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "account_id")
     private Account account;
-    @NotEmpty
     @Column(name = "first_name")
     private String firstName;
-    @NotEmpty
     @Column(name = "last_name")
     private String lastName;
 
     @Enumerated(value = EnumType.STRING)
     private Faculty faculty;
-    @Positive
     @Column(name = "group_number")
     private Integer group;
 
     public void setAccount(Account account) {
-        account.setStudent(this);
         this.account = account;
+        account.setStudent(this);
     }
 }

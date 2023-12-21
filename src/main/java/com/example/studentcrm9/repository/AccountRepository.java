@@ -10,9 +10,8 @@ import java.util.Optional;
 public interface AccountRepository extends JpaRepository<Account,Long> {
     Optional<Account>getAccountById(Long id);
     void deleteAccountByLogin(String login);
-    default boolean saveAccount(Account account){
-        save(account);
-        return true;
+    default Optional<Account> saveAccount(Account account){
+        return Optional.of( save(account));
     }
     Optional<Account> getAccountByLoginAndPassword( String login,String password);
 }
