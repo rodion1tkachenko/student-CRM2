@@ -2,6 +2,8 @@ package com.example.studentcrm9.controller;
 
 import com.example.studentcrm9.database.entity.Account;
 import com.example.studentcrm9.service.AccountService;
+import com.example.studentcrm9.service.AdminService;
+import com.example.studentcrm9.service.LoginService;
 import com.example.studentcrm9.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -15,8 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 @RequestMapping("/login")
 public class LoginController {
-    private final AccountService accountService;
-    private final StudentService studentService;
+    private final LoginService loginService;
 
     @GetMapping
     public String loginPage(Model model) {
@@ -25,7 +26,7 @@ public class LoginController {
 
     @PostMapping
     public String login(Model model, @ModelAttribute("account") Account account) {
-        return accountService.getLoginRedirect(model,account);
+        return loginService.getLoginRedirect(model,account);
 
     }
 

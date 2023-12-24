@@ -20,7 +20,7 @@ import java.util.Optional;
 public class AccountService {
     private final AccountRepository accountRepository;
     private final AccountCreateMapper accountCreateMapper;
-    private  final StudentService studentService;
+    private final StudentService studentService;
 
     public Optional<Account> checkAccount(String login, String password) {
         return accountRepository.getAccountByLoginAndPassword(login, password);
@@ -52,7 +52,7 @@ public class AccountService {
                         NoSuchElementException::new
                 );
     }
-    private String getPathDependsOnRole(Model model, Account obj) {
+    public String getPathDependsOnRole(Model model, Account obj) {
         if (obj.getRole().equals(Role.USER)) {
             return redirectUserWithAttributes(model, obj);
         }
@@ -67,4 +67,5 @@ public class AccountService {
         studentService.setGroupMateAttribute(model, student);
         return "redirect:/students/" + student.getId();
     }
+
 }

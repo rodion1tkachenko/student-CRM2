@@ -23,8 +23,6 @@ import java.util.Optional;
 @RequestMapping("/students")
 public class StudentController {
     private final StudentService studentService;
-    private final AccountService accountService;
-
     @GetMapping
     public String findAll(Model model) {
         model.addAttribute("students", studentService.findAllByFaculty(Faculty.AMM));
@@ -53,21 +51,21 @@ public class StudentController {
     public String registration(@Validated(Default.class) @ModelAttribute("registrationDto") RegistrationDto registrationDto,
                                BindingResult bindingResult,
                                RedirectAttributes redirectAttributes) {
-        if (bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute("registrationDto", registrationDto);
-            redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
-            return "redirect:/students/registration";
-        }
-
-        Optional<Account> account = accountService.saveAccount(registrationDto);
-        return "redirect:/students/" + account.get().getStudent().getId();
+        return studentService.registrationRedirect(registrationDto, bindingResult, redirectAttributes);
+//        if (bindingResult.hasErrors()) {
+//            redirectAttributes.addFlashAttribute("registrationDto", registrationDto);
+//            redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
+//            return "redirect:/students/registration";
+//        }
+//        Optional<Account> account = accountService.saveAccount(registrationDto);
+//        return "redirect:/students/" + account.get().getStudent().getId();
 
     }
 
-    @GetMapping("/{id}/update")
-    public String updateStudent(@PathVariable("id") Long id) {
-        return "update/updateStudent";
-    }
+//    @GetMapping("/{id}/update")
+//    public String updateStudent(@PathVariable("id") Long id) {
+//        return "update/updateStudent";
+//    }
 
 //    public void setGroupMateAttribute(Model model, Student student) {
 //        model.addAttribute("groupMates", studentService.findGroupMates(student));
