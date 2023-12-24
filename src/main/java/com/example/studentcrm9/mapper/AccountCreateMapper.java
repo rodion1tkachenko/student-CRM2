@@ -27,18 +27,18 @@ public class AccountCreateMapper implements Mapper<RegistrationDto, Account>{
 
     private Account setAccountFields(RegistrationDto fromObject) {
         Account account=new Account();
-        account.setLogin(fromObject.getLogin());
-        account.setPassword(fromObject.getPassword());
-        account.setRole(fromObject.getRole());
+        account.setLogin(fromObject.login());
+        account.setPassword(fromObject.login());
+        account.setRole(fromObject.role());
         return account;
     }
 
     private Student setStudentFields(RegistrationDto fromObject) {
         Student student=new Student();
-        student.setFirstName(fromObject.getFirstName());
-        student.setLastName(fromObject.getLastName());
-        student.setFaculty(fromObject.getFaculty());
-        student.setGroup(fromObject.getGroup());
+        student.setFirstName(fromObject.firstName());
+        student.setLastName(fromObject.lastName());
+        student.setFaculty(fromObject.faculty());
+        student.setGroup(fromObject.group());
         return student;
     }
 }

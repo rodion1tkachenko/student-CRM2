@@ -17,7 +17,7 @@ public class NameHasNoDigitsValidator implements ConstraintValidator<NameHasNoDi
     }
 
     private boolean checkFirstname(RegistrationDto value) {
-        for (char c : value.getFirstName().toCharArray()) {
+        for (char c : value.firstName().toCharArray()) {
             if (Character.isDigit(c)){
                 return true;
             }
@@ -26,7 +26,7 @@ public class NameHasNoDigitsValidator implements ConstraintValidator<NameHasNoDi
     }
 
     private boolean checkLastname(RegistrationDto value) {
-        for (char c : value.getLastName().toCharArray()) {
+        for (char c : value.lastName().toCharArray()) {
             if (Character.isDigit(c)){
                 return true;
             }
