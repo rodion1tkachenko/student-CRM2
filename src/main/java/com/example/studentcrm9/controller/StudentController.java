@@ -59,7 +59,7 @@ public class StudentController {
 //        }
 //        Optional<Account> account = accountService.saveAccount(registrationDto);
 //        return "redirect:/students/" + account.get().getStudent().getId();
-
+//a
     }
 
 //    @GetMapping("/{id}/update")
