@@ -34,7 +34,6 @@ public class StudentService {
     private final StudentRepository studentRepository;
     private final AccountRepository accountRepository;
     private final AccountCreateMapper accountCreateMapper;
-//    private final AccountService accountService;
 
     @Query("update Student s set s.firstName = ?1, s.lastName = ?2 where s.id = ?3")
     @Modifying
@@ -58,15 +57,6 @@ public class StudentService {
     public List<Student> findAllByFaculty(Faculty faculty) {
         return studentRepository.findAllByFaculty(faculty);
     }
-
-//    public List<Student> removeById(Long id) {
-////        if( findAccountById(id).isPresent()){
-////            return studentRepository.removeById(id);
-////        }
-////        else{
-////            throw new NoSuchElementException();
-////        }
-////    }
 
     private Optional<Account> findAccountById(Long id) {
         return accountRepository.getAccountById(id);

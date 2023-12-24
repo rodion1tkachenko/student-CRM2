@@ -52,32 +52,9 @@ public class StudentController {
                                BindingResult bindingResult,
                                RedirectAttributes redirectAttributes) {
         return studentService.registrationRedirect(registrationDto, bindingResult, redirectAttributes);
-//        if (bindingResult.hasErrors()) {
-//            redirectAttributes.addFlashAttribute("registrationDto", registrationDto);
-//            redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
-//            return "redirect:/students/registration";
-//        }
-//        Optional<Account> account = accountService.saveAccount(registrationDto);
-//        return "redirect:/students/" + account.get().getStudent().getId();
-//a
+
     }
 
-//    @GetMapping("/{id}/update")
-//    public String updateStudent(@PathVariable("id") Long id) {
-//        return "update/updateStudent";
-//    }
 
-//    public void setGroupMateAttribute(Model model, Student student) {
-//        model.addAttribute("groupMates", studentService.findGroupMates(student));
-//    }
-//
-//    public void setStudentAttributes(Model model, Student student) {
-//        model.addAttribute("student", student);
-    //24.12 commented
-    //        model.addAttribute("firstName", student.getFirstName());
-//        model.addAttribute("lastName", student.getLastName());
-//        model.addAttribute("faculty", student.getFaculty());
-//        model.addAttribute("group", student.getGroup());
-//}
 
 }

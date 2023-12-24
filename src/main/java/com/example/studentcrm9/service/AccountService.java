@@ -36,11 +36,6 @@ public class AccountService {
     }
 
     @Transactional
-    public Optional<Account> saveAccount(Account account) {
-        account.getStudent().setAccount(account);
-        return accountRepository.saveAccount(account);
-    }
-    @Transactional
     public Optional<Account> saveAccount(RegistrationDto accountDto) {
         return accountRepository.saveAccount(
                 accountCreateMapper.map(accountDto));

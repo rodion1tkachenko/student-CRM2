@@ -15,6 +15,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class LoginService {
     private final AccountRepository accountRepository;
+    //TODO:remove dependency from AccountService
     private final AccountService accountService;
 
     public String getLoginRedirect(Model model, Account account) {
