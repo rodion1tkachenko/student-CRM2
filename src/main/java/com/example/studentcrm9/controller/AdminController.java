@@ -21,9 +21,7 @@ public class AdminController {
     }
     @PostMapping
     public String admin(@ModelAttribute("id") Integer id){
-        if(studentService.findById(Long.valueOf(id)).isPresent()){
-            studentService.removeById(Long.valueOf(id));
-        }
+        studentService.removeById(id.longValue());
         return "redirect:/admin";
     }
 
