@@ -24,14 +24,23 @@ import java.util.Optional;
 public class StudentController {
     private final StudentService studentService;
     @GetMapping
-    public String findAll(Model model) {
+    public String findAll(Model model,
+                          @ModelAttribute("role") String role) {
         model.addAttribute("students", studentService.findAllByFaculty(Faculty.AMM));
+//        if(role.equals("ADMIN")){
+//            redirectAttributes.addAttribute("role","ADMIN");
+//        }
         return "student/students";
     }
 
     @GetMapping("/{id}")
-    public String showAccountPage(@PathVariable("id") Long id, Model model) {
+    public String showAccountPage(@PathVariable("id") Long id, Model model, @ModelAttribute("role")String role) {
         studentService.setAttributesByAccountId(id, model);
+        return "student/student";
+    }
+    @PostMapping("/{id}")
+    public String showAccountPage(@PathVariable("id") Long id) {
+        System.out.println("update");
         return "student/student";
 
     }

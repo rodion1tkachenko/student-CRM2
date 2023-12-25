@@ -35,8 +35,10 @@ public class StudentService {
 
     @Query("update Student s set s.firstName = ?1, s.lastName = ?2 where s.id = ?3")
     @Modifying
-    public void setStudentInfoById(String firstname, String lastname, Long userId) {
-        studentRepository.setStudentInfoById(firstname, lastname, userId);
+    public void setStudentInfoById(Student student, Long userId) {
+        studentRepository.setStudentInfoById(student.getFirstName(),
+                student.getLastName(),
+                userId);
     }
 //TODO: why this method returns account?
     public Account setAttributesByAccountId(Long id, Model model) {

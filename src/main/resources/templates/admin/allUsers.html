@@ -11,7 +11,7 @@
 <div th:each="student : ${students}">
     <!-- Используем Thymeleaf для вывода информации о студенте через запятую -->
     <p>
-        <a th:href="@{'/students/' + ${student.id}}">
+        <a th:href="@{'/admin/' + ${student.id}}">
             <span th:text="${ student.firstName + ', ' + student.lastName + ', faculty ' +  student.faculty + ', group ' + student.group}"></span>
         </a>
     </p>
