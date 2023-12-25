@@ -18,9 +18,9 @@
     <button type="submit">UPDATE</button>
 </form>
 
-<h2>список одногруппников:</h2>
+<h2>Список одногруппников:</h2>
 <div th:each="groupmate : ${groupMates}">
-    <a th:href="@{'/students/' + ${groupmate.getId()}}" th:text="|${groupmate.getFirstName()}, ${groupmate.getLastName()}|">User</a>
+    <p th:text="|${groupmate.getFirstName()}, ${groupmate.getLastName()}|"></p>
 </div>
 </body>
 </html>
