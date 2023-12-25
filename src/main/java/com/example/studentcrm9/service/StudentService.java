@@ -8,7 +8,6 @@ import com.example.studentcrm9.dto.RegistrationDto;
 import com.example.studentcrm9.mapper.AccountCreateMapper;
 import com.example.studentcrm9.repository.AccountRepository;
 import com.example.studentcrm9.repository.StudentRepository;
-import jakarta.validation.groups.Default;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -17,13 +16,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -34,6 +30,8 @@ public class StudentService {
     private final StudentRepository studentRepository;
     private final AccountRepository accountRepository;
     private final AccountCreateMapper accountCreateMapper;
+//    private final RegistrationMapper registrationMapper;
+
 
     @Query("update Student s set s.firstName = ?1, s.lastName = ?2 where s.id = ?3")
     @Modifying

@@ -18,6 +18,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class AccountService {
+//    private final RegistrationMapper registrationMapper;
     private final AccountRepository accountRepository;
     private final AccountCreateMapper accountCreateMapper;
     private final StudentService studentService;
@@ -38,6 +39,7 @@ public class AccountService {
     @Transactional
     public Optional<Account> saveAccount(RegistrationDto accountDto) {
         return accountRepository.saveAccount(
+//                accountCreateMapper.map(accountDto));
                 accountCreateMapper.map(accountDto));
     }
     public String getLoginRedirect(Model model, Account account){

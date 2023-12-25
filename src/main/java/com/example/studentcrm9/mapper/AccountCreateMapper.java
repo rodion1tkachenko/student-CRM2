@@ -5,6 +5,7 @@ import com.example.studentcrm9.database.entity.Student;
 import com.example.studentcrm9.dto.RegistrationDto;
 import org.springframework.stereotype.Component;
 
+//TODO: i didn't make mapping with MapStruct because i map 2 hibernate entities with dto
 @Component
 public class AccountCreateMapper implements Mapper<RegistrationDto, Account>{
     @Override
