@@ -24,12 +24,8 @@ import java.util.Optional;
 public class StudentController {
     private final StudentService studentService;
     @GetMapping
-    public String findAll(Model model,
-                          @ModelAttribute("role") String role) {
+    public String findAll(Model model) {
         model.addAttribute("students", studentService.findAllByFaculty(Faculty.AMM));
-//        if(role.equals("ADMIN")){
-//            redirectAttributes.addAttribute("role","ADMIN");
-//        }
         return "student/students";
     }
 
