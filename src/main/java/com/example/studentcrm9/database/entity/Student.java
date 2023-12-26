@@ -30,9 +30,9 @@ public class Student {
     private Faculty faculty;
     @Column(name = "group_number")
     private Integer group;
-
-    public void setAccount(Account account) {
-        this.account = account;
-        account.setStudent(this);
-    }
+//25.12
+//    public void setAccount(Account account) {
+//        this.account = account;
+//        account.setStudent(this);
+//    }
 }

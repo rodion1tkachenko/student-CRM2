@@ -2,16 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Delete Page</title>
+    <title>Admin Panel</title>
 </head>
 <body>
 
-<form  action="#" th:action="@{/admin}" th:object="${id}" method="post">
-    <label for="id">Enter ID:</label>
-    <input type="text" id="id" name="id" required>
+<!-- Update Link -->
+<a th:href="@{/admin/allUsers}">Update</a><br>
 
-    <button type="submit">Delete</button>
-</form>
+<!-- Delete Link -->
+<a th:href="@{/admin/delete}">Delete</a><br>
+
+<!-- Registration Link -->
+<a th:href="@{/students/registration}">Registration</a><br>
 
 </body>
 </html>
