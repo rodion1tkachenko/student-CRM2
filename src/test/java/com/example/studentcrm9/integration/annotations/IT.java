@@ -1,4 +1,4 @@
-package com.dmdev.spring.integration.annotation;
+package com.example.studentcrm9.integration.annotations;
 
 import com.example.studentcrm9.integration.TestApplicationRunner;
 import org.springframework.boot.test.context.SpringBootTest;

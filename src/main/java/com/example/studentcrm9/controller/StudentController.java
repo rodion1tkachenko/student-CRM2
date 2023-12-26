@@ -30,7 +30,7 @@ public class StudentController {
     }
 
     @GetMapping("/{id}")
-    public String showAccountPage(@PathVariable("id") Long id, Model model, @ModelAttribute("role")String role) {
+    public String showAccountPage(@PathVariable("id") Long id, Model model) {
         studentService.setAttributesByAccountId(id, model);
         return "student/student";
     }

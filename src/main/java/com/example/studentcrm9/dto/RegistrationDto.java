@@ -7,10 +7,13 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.FieldNameConstants;
 import org.springframework.stereotype.Component;
 
 @Builder
 @NameHasNoDigits
+@FieldNameConstants
 public record RegistrationDto(
         @Email String login,
         @Size(min = 3, max = 32) String password,
