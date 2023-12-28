@@ -37,7 +37,7 @@ public class StudentControllerTest {
                 .andExpect(view().name("student/students"))
                 .andExpect(model().attributeExists("students"));
     }
-
+    //сделать дто везде. валидация. мапстракт. изменить ентити
     @Test
     public void testShowAccountPage() throws Exception {
         Long studentId = 1L;
