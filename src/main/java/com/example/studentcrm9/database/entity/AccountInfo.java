@@ -3,7 +3,15 @@ package com.example.studentcrm9.database.entity;
 import com.example.studentcrm9.database.enums.Faculty;
 import com.example.studentcrm9.database.enums.Role;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 @Entity
 @Table(name = "account_info")
 public class AccountInfo {
@@ -20,7 +28,7 @@ public class AccountInfo {
     private String password;
 
     @Column(name = "role", length = 64, columnDefinition = "varchar(64) default 'USER'")
-    private Role role = Role.USER;
+    private Role role;
 
     @Column(name = "firstname", nullable = false, length = 64)
     private String firstname;
