@@ -47,7 +47,7 @@ public class StudentController {
     }
 
     @PostMapping
-    public String findByStudentId(@ModelAttribute Student student) {
+    public String findByStudentId(@ModelAttribute AccountInfoDto accountInfoDto) {
         return "student/student";
     }
 
