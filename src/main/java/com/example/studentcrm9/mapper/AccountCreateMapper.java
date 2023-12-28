@@ -16,7 +16,6 @@ public class AccountCreateMapper implements Mapper<RegistrationDto, Account>{
         System.out.println();
         return account;
     }
-
 //    @Override
 //    public Account map(RegistrationDto registrationDto, Account toObject) {
 //        toObject = setAccountFields(registrationDto);
@@ -25,7 +24,6 @@ public class AccountCreateMapper implements Mapper<RegistrationDto, Account>{
 //        System.out.println();
 //        return account;
 //    }
-
     private Account setAccountFields(RegistrationDto fromObject) {
         Account account=new Account();
         account.setLogin(fromObject.login());

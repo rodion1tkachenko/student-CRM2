@@ -31,8 +31,8 @@ public class Student {
     @Column(name = "group_number")
     private Integer group;
 //25.12
-//    public void setAccount(Account account) {
-//        this.account = account;
-//        account.setStudent(this);
-//    }
+    public void setAccount(Account account) {
+        this.account = account;
+        account.setStudent(this);
+    }
 }
