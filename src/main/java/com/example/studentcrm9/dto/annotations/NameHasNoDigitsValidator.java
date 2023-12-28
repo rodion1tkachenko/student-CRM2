@@ -1,6 +1,6 @@
 package com.example.studentcrm9.dto.annotations;
 
-import com.example.studentcrm9.dto.RegistrationDto;
+import com.example.studentcrm9.dto.AccountInfoDto;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import lombok.RequiredArgsConstructor;
@@ -8,16 +8,20 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class NameHasNoDigitsValidator implements ConstraintValidator<NameHasNoDigits, RegistrationDto> {
+public class NameHasNoDigitsValidator implements ConstraintValidator<NameHasNoDigits, AccountInfoDto> {
     @Override
-    public boolean isValid(RegistrationDto value, ConstraintValidatorContext context) {
-        if (checkFirstname(value)) return false;
-        if (checkLastname(value)) return false;
+    public boolean isValid(AccountInfoDto value, ConstraintValidatorContext context) {
+        if (firstnameContainsDigit(value)) {
+            return false;
+        }
+        if (lastnameContainsDigit(value)) {
+            return false;
+        }
         return true;
     }
 
-    private boolean checkFirstname(RegistrationDto value) {
-        for (char c : value.firstName().toCharArray()) {
+    private boolean firstnameContainsDigit(AccountInfoDto value) {
+        for (char c : value.firstname().toCharArray()) {
             if (Character.isDigit(c)){
                 return true;
             }
@@ -25,8 +29,8 @@ public class NameHasNoDigitsValidator implements ConstraintValidator<NameHasNoDi
         return false;
     }
 
-    private boolean checkLastname(RegistrationDto value) {
-        for (char c : value.lastName().toCharArray()) {
+    private boolean lastnameContainsDigit(AccountInfoDto value) {
+        for (char c : value.lastname().toCharArray()) {
             if (Character.isDigit(c)){
                 return true;
             }

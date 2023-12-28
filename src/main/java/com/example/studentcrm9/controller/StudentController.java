@@ -57,7 +57,8 @@ public class StudentController {
 //        return "registration/registration";
 //    }
     @GetMapping("/registration")
-    public String registration(Model model, @ModelAttribute("accountInfoDto") AccountInfoDto accountInfoDto) {
+    public String registration(Model model,
+                                @ModelAttribute("accountInfoDto") AccountInfoDto accountInfoDto) {
         accountInfoService.setRegistrationAttributes(model, accountInfoDto);
         return "registration/registration";
     }
@@ -69,7 +70,7 @@ public class StudentController {
 //        return studentService.registrationRedirect(registrationDto, bindingResult, redirectAttributes);
 //    }
     @PostMapping("/registration")
-    public String registration(@ModelAttribute("accountInfoDto") AccountInfoDto accountInfoDto,
+    public String registration(@Validated @ModelAttribute("accountInfoDto") AccountInfoDto accountInfoDto,
                                BindingResult bindingResult,
                                RedirectAttributes redirectAttributes) {
         return accountInfoService.registrationRedirect(accountInfoDto, bindingResult, redirectAttributes);
