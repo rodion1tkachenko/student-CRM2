@@ -13,14 +13,16 @@
 <p th:text="'Факультет: ' + ${student.getFaculty()}"></p>
 <p th:text="'Группа: ' + ${student.getGroup()}"></p>
 
-<!-- Добавляем кнопку UPDATE -->
-<form th:action="@{'/students/' + ${student.getId()}+'/update'}" method="get">
-    <button type="submit">UPDATE</button>
-</form>
+<!-- Проверка роли для добавления кнопки UPDATE -->
+<!--<th:block th:if="${#strings.equals(role, 'ADMIN')}">-->
+<!--    <form th:action="@{'/students/' + ${student.getId()}+'/update'}" method="get">-->
+<!--        <button type="submit">UPDATE</button>-->
+<!--    </form>-->
+<!--</th:block>-->
 
-<h2>список одногруппников:</h2>
+<h2>Список одногруппников:</h2>
 <div th:each="groupmate : ${groupMates}">
-    <a th:href="@{'/students/' + ${groupmate.getId()}}" th:text="|${groupmate.getFirstName()}, ${groupmate.getLastName()}|">User</a>
+    <p th:text="|${groupmate.getFirstName()}, ${groupmate.getLastName()}|"></p>
 </div>
 </body>
 </html>

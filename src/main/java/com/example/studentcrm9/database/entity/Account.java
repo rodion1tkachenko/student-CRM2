@@ -30,5 +30,9 @@ public class Account {
 
     @Enumerated(EnumType.STRING)
     private Role role;
-
+    
+//    public void setStudent(Student student) {
+//        this.student = student;
+//        student.setAccount(this);
+//    }
 }
