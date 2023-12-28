@@ -26,7 +26,7 @@ public class AccountInfo {
 
     @Column(name = "password", nullable = false, length = 64)
     private String password;
-
+    @Enumerated(EnumType.STRING)
     @Column(name = "role", length = 64, columnDefinition = "varchar(64) default 'USER'")
     private Role role;
 
@@ -35,7 +35,7 @@ public class AccountInfo {
 
     @Column(name = "lastname", length = 64, columnDefinition = "varchar(64) default ''")
     private String lastname = "";
-
+    @Enumerated(EnumType.STRING)
     @Column(name = "faculty", length = 64, columnDefinition = "varchar(64) default 'AMM'")
     private Faculty faculty;
 

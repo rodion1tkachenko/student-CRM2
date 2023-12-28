@@ -4,7 +4,9 @@ import com.example.studentcrm9.database.entity.Account;
 import com.example.studentcrm9.database.entity.Student;
 import com.example.studentcrm9.database.enums.Faculty;
 import com.example.studentcrm9.database.enums.Role;
+import com.example.studentcrm9.dto.AccountInfoDto;
 import com.example.studentcrm9.dto.RegistrationDto;
+import com.example.studentcrm9.service.AccountInfoService;
 import com.example.studentcrm9.service.AccountService;
 import com.example.studentcrm9.service.StudentService;
 import jakarta.validation.groups.Default;
@@ -23,6 +25,8 @@ import java.util.Optional;
 @RequestMapping("/students")
 public class StudentController {
     private final StudentService studentService;
+    private final AccountInfoService accountInfoService;
+
     @GetMapping
     public String findAll(Model model) {
         model.addAttribute("students", studentService.findAllByFaculty(Faculty.AMM));
@@ -34,6 +38,7 @@ public class StudentController {
         studentService.setAttributesByAccountId(id, model);
         return "student/student";
     }
+
     @PostMapping("/{id}")
     public String showAccountPage(@PathVariable("id") Long id) {
         System.out.println("update");
@@ -46,20 +51,29 @@ public class StudentController {
         return "student/student";
     }
 
+    //    @GetMapping("/registration")
+//    public String registration(Model model, @ModelAttribute("registrationDto") RegistrationDto registrationDto) {
+//        studentService.setRegistrationAttributes(model, registrationDto);
+//        return "registration/registration";
+//    }
     @GetMapping("/registration")
-    public String registration(Model model, @ModelAttribute("registrationDto") RegistrationDto registrationDto) {
-        studentService.setRegistrationAttributes(model, registrationDto);
+    public String registration(Model model, @ModelAttribute("accountInfoDto") AccountInfoDto accountInfoDto) {
+        accountInfoService.setRegistrationAttributes(model, accountInfoDto);
         return "registration/registration";
     }
 
+//    @PostMapping("/registration")
+//    public String registration(@Validated(Default.class) @ModelAttribute("registrationDto") RegistrationDto registrationDto,
+//                               BindingResult bindingResult,
+//                               RedirectAttributes redirectAttributes) {
+//        return studentService.registrationRedirect(registrationDto, bindingResult, redirectAttributes);
+//    }
     @PostMapping("/registration")
-    public String registration(@Validated(Default.class) @ModelAttribute("registrationDto") RegistrationDto registrationDto,
+    public String registration(@ModelAttribute("accountInfoDto") AccountInfoDto accountInfoDto,
                                BindingResult bindingResult,
                                RedirectAttributes redirectAttributes) {
-        return studentService.registrationRedirect(registrationDto, bindingResult, redirectAttributes);
-
+        return accountInfoService.registrationRedirect(accountInfoDto, bindingResult, redirectAttributes);
     }
-
 
 
 }

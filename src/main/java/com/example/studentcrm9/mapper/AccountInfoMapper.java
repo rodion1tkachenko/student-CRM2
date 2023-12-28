@@ -9,4 +9,5 @@ import org.springframework.stereotype.Component;
 //@Component
 public interface AccountInfoMapper {
     AccountInfoDto accountInfoToDto(AccountInfo accountInfo);
+    AccountInfo dtoToAccountInfo(AccountInfoDto accountInfoDto);
 }
