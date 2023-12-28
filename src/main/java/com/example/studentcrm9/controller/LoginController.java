@@ -1,6 +1,7 @@
 package com.example.studentcrm9.controller;
 
 import com.example.studentcrm9.database.entity.Account;
+import com.example.studentcrm9.dto.AccountInfoDto;
 import com.example.studentcrm9.service.AccountService;
 import com.example.studentcrm9.service.AdminService;
 import com.example.studentcrm9.service.LoginService;
@@ -24,9 +25,14 @@ public class LoginController {
         return "/login/login";
     }
 
+    //    @PostMapping
+//    public String login(Model model, @ModelAttribute("account") Account account) {
+//        return loginService.getLoginRedirect(model,account);
+//
+//    }
     @PostMapping
-    public String login(Model model, @ModelAttribute("account") Account account) {
-        return loginService.getLoginRedirect(model,account);
+    public String login(Model model, @ModelAttribute("account") AccountInfoDto accountInfoDto) {
+        return loginService.getLoginRedirect(model, accountInfoDto);
 
     }
 

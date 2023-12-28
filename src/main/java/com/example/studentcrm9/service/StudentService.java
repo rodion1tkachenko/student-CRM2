@@ -80,6 +80,12 @@ public class StudentService {
         model.addAttribute("roles", Role.values());
         model.addAttribute("faculties", Faculty.values());
     }
+    @Transactional
+    public Optional<Account> saveAccount(RegistrationDto accountDto) {
+        return accountRepository.saveAccount(
+                accountCreateMapper.map(accountDto));
+    }
+
     public String registrationRedirect( RegistrationDto registrationDto,
                                        BindingResult bindingResult,
                                        RedirectAttributes redirectAttributes){
@@ -89,15 +95,9 @@ public class StudentService {
         return redirectToAccount(registrationDto);
 
     }
-
     private String redirectToAccount(RegistrationDto registrationDto) {
         Optional<Account> account = saveAccount(registrationDto);
         return "redirect:/students/" + account.get().getStudent().getId();
-    }
-    @Transactional
-    public Optional<Account> saveAccount(RegistrationDto accountDto) {
-        return accountRepository.saveAccount(
-                accountCreateMapper.map(accountDto));
     }
 
         private static String redirectToRegistration(RegistrationDto registrationDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
