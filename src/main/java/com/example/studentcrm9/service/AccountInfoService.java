@@ -21,9 +21,7 @@ import java.util.Optional;
 public class AccountInfoService {
     private final AccountInfoMapper accountInfoMapper;
     private final AccountInfoRepository accountInfoRepository;
-    public AccountInfoDto service(AccountInfo accountInfo){
-        return accountInfoMapper.accountInfoToDto(accountInfo);
-    }
+
     public Optional<AccountInfo>save(AccountInfoDto accountInfoDto){
         return Optional.of(accountInfoRepository
                 .save(accountInfoMapper.dtoToAccountInfo(accountInfoDto)));
@@ -46,7 +44,7 @@ public class AccountInfoService {
     }
     private String redirectToAccount(AccountInfoDto accountInfoDto) {
         Optional<AccountInfo> account = save(accountInfoDto);
-        return "redirect:/students";  /*+account.get().getStudent().getId();*/
+        return "redirect:/students";
     }
 
     private static String redirectToRegistration(AccountInfoDto accountInfoDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {

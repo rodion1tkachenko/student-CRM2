@@ -8,20 +8,16 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class NameHasNoDigitsValidator implements ConstraintValidator<NameHasNoDigits, AccountInfoDto> {
+public class NameHasNoDigitsValidator implements ConstraintValidator<NoDigitsInNameAndSurname, AccountInfoDto> {
     @Override
     public boolean isValid(AccountInfoDto value, ConstraintValidatorContext context) {
-        if (firstnameContainsDigit(value)) {
-            return false;
-        }
-        if (lastnameContainsDigit(value)) {
+        if (stringContainsDigit(value.firstname())||stringContainsDigit(value.lastname())) {
             return false;
         }
         return true;
     }
-
-    private boolean firstnameContainsDigit(AccountInfoDto value) {
-        for (char c : value.firstname().toCharArray()) {
+    private boolean stringContainsDigit(String string) {
+        for (char c : string.toCharArray()) {
             if (Character.isDigit(c)){
                 return true;
             }
@@ -29,12 +25,4 @@ public class NameHasNoDigitsValidator implements ConstraintValidator<NameHasNoDi
         return false;
     }
 
-    private boolean lastnameContainsDigit(AccountInfoDto value) {
-        for (char c : value.lastname().toCharArray()) {
-            if (Character.isDigit(c)){
-                return true;
-            }
-        }
-        return false;
-    }
 }

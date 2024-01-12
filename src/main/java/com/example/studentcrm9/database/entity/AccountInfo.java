@@ -3,15 +3,18 @@ package com.example.studentcrm9.database.entity;
 import com.example.studentcrm9.database.enums.Faculty;
 import com.example.studentcrm9.database.enums.Role;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+
+@Getter
+@Setter
+@RequiredArgsConstructor
+@EqualsAndHashCode(exclude = "id")
+@ToString(exclude = "id")
+
 @Entity
 @Table(name = "account_info")
 public class AccountInfo {
@@ -31,15 +34,15 @@ public class AccountInfo {
     private Role role;
 
     @Column(name = "firstname", nullable = false, length = 64)
-    private String firstname;
+    private String firstName;
 
     @Column(name = "lastname", length = 64, columnDefinition = "varchar(64) default ''")
-    private String lastname = "";
+    private String lastName = "";
     @Enumerated(EnumType.STRING)
     @Column(name = "faculty", length = 64, columnDefinition = "varchar(64) default 'AMM'")
     private Faculty faculty;
 
     @Column(name = "group_number", columnDefinition = "integer default 1")
-    private Integer groupNumber = 1;
+    private Integer groupNumber;
 
 }

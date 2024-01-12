@@ -25,11 +25,6 @@ public class LoginController {
         return "/login/login";
     }
 
-    //    @PostMapping
-//    public String login(Model model, @ModelAttribute("account") Account account) {
-//        return loginService.getLoginRedirect(model,account);
-//
-//    }
     @PostMapping
     public String login(Model model, @ModelAttribute("account") AccountInfoDto accountInfoDto) {
         return loginService.getLoginRedirect(model, accountInfoDto);

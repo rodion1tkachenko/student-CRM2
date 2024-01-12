@@ -6,7 +6,6 @@ import org.mapstruct.Mapper;
 import org.springframework.stereotype.Component;
 
 @Mapper(componentModel = "spring")
-//@Component
 public interface AccountInfoMapper {
     AccountInfoDto accountInfoToDto(AccountInfo accountInfo);
     AccountInfo dtoToAccountInfo(AccountInfoDto accountInfoDto);

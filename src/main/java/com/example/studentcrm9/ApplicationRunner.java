@@ -24,15 +24,6 @@ public class ApplicationRunner {
 
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(ApplicationRunner.class, args);
-        AccountInfoService accountInfoService = context.getBean(AccountInfoService.class);
-        AccountInfo accountInfo= AccountInfo.builder()
-                .login("petya@mail.ru")
-                .password("123")
-                .firstname("Petr")
-                .lastname("Sherbakov")
-                .faculty(Faculty.AMM)
-                .build();
-        AccountInfoDto accountInfoDto = accountInfoService.service(accountInfo);
     }
 
 }

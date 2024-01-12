@@ -37,9 +37,8 @@ public class AccountService {
     }
 
     @Transactional
-    public Optional<Account> saveAccount(RegistrationDto accountDto) {
-        return accountRepository.saveAccount(
-//                accountCreateMapper.map(accountDto));
+    public Account saveAccount(RegistrationDto accountDto) {
+        return accountRepository.save(
                 accountCreateMapper.map(accountDto));
     }
     public String getLoginRedirect(Model model, Account account){

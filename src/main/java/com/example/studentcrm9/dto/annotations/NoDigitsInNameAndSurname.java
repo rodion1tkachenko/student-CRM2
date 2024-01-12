@@ -12,7 +12,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Constraint(validatedBy = {NameHasNoDigitsValidator.class})
 @Target(TYPE)
 @Retention(RUNTIME)
-public @interface NameHasNoDigits {
+public @interface NoDigitsInNameAndSurname {
     String message() default "lastname and firstname shouldn't have digits";
 
     Class<?>[] groups() default { };

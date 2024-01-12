@@ -81,8 +81,8 @@ public class StudentService {
         model.addAttribute("faculties", Faculty.values());
     }
     @Transactional
-    public Optional<Account> saveAccount(RegistrationDto accountDto) {
-        return accountRepository.saveAccount(
+    public Account saveAccount(RegistrationDto accountDto) {
+        return accountRepository.save(
                 accountCreateMapper.map(accountDto));
     }
 
@@ -96,8 +96,8 @@ public class StudentService {
 
     }
     private String redirectToAccount(RegistrationDto registrationDto) {
-        Optional<Account> account = saveAccount(registrationDto);
-        return "redirect:/students/" + account.get().getStudent().getId();
+        Account account = saveAccount(registrationDto);
+        return "redirect:/students/" + account.getStudent().getId();
     }
 
         private static String redirectToRegistration(RegistrationDto registrationDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
