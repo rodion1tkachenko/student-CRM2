@@ -2,27 +2,39 @@ package com.example.studentcrm9.service;
 
 import com.example.studentcrm9.database.entity.AccountInfo;
 import com.example.studentcrm9.database.enums.Faculty;
+import com.example.studentcrm9.dto.AccountInfoDto;
+import com.example.studentcrm9.mapper.AccountInfoMapper;
 import lombok.RequiredArgsConstructor;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.stereotype.Component;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 @Component
 @RequiredArgsConstructor
 @SpringBootTest
 class AccountInfoServiceTest {
 
     private final AccountInfoService accountInfoService;
-        AccountInfo accountInfo= AccountInfo.builder()
+    AccountInfoDto accountInfoDto = AccountInfoDto.builder()
             .login("petya@mail.ru")
             .password("123")
             .firstname("Petr")
             .lastname("Sherbakov")
             .faculty(Faculty.AMM)
             .build();
+    private final AccountInfoMapper accountInfoMapper;
+
     @Test
-    void service() {
-        System.out.println(accountInfoService.service(accountInfo));
+    void successSave() {
+        AccountInfo accountInfo = accountInfoMapper.dtoToAccountInfo(accountInfoDto);
+        Assertions.assertEquals(accountInfo, accountInfoService.save(accountInfoDto).get());
+    }
+    @Test
+    void saveNullIsNullPointerException() {
+        Assertions.assertThrows(NullPointerException.class,
+                ()-> accountInfoService.save(accountInfoDto));
     }
 }

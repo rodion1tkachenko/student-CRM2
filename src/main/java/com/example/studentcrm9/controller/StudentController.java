@@ -38,20 +38,6 @@ public class StudentController {
         studentService.setAttributesByAccountId(id, model);
         return "student/student";
     }
-
-    @PostMapping("/{id}")
-    public String showAccountPage(@PathVariable("id") Long id) {
-        System.out.println("update");
-        return "student/student";
-
-    }
-
-    @PostMapping
-    public String findByStudentId(@ModelAttribute AccountInfoDto accountInfoDto) {
-        return "student/student";
-    }
-
-
     @GetMapping("/registration")
     public String registration(Model model,
                                 @ModelAttribute("accountInfoDto") AccountInfoDto accountInfoDto) {
