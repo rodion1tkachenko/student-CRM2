@@ -19,7 +19,6 @@ import org.springframework.context.annotation.ComponentScan;
 import java.util.Optional;
 
 @SpringBootApplication
-@ConfigurationPropertiesScan
 public class ApplicationRunner {
 
     public static void main(String[] args) {

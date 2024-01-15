@@ -1,20 +1,15 @@
 package com.example.studentcrm9.database.entity;
 
-import com.example.studentcrm9.database.enums.Faculty;
-import com.example.studentcrm9.database.enums.Role;
+import com.example.studentcrm9.database.enums.*;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 
 @Getter
 @Setter
 @RequiredArgsConstructor
 @EqualsAndHashCode(exclude = "id")
 @ToString(exclude = "id")
-
 @Entity
 @Table(name = "account_info")
 public class AccountInfo {

@@ -10,7 +10,5 @@ import java.util.Optional;
 
 @Repository
 public interface AccountInfoRepository extends CrudRepository<AccountInfo,Long> {
-    default Optional<AccountInfo> saveAccount(AccountInfo accountInfo){
-        return Optional.of(save(accountInfo));
-    }
+
 }

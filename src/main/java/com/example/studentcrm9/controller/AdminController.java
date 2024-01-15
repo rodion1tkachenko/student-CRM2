@@ -30,11 +30,6 @@ public class AdminController {
         model.addAttribute("students", studentService.findAllByFaculty(Faculty.AMM));
         return "/admin/allUsers";
     }
-//    @PostMapping
-//    public String admin(@ModelAttribute("id") Integer id) {
-////        adminService.removeById(id.longValue());
-//        return "redirect:/admin";
-//    }
     @GetMapping("/{id}" )
     public String updateUser(@PathVariable("id")Integer id,
                              Model model)
@@ -45,7 +40,6 @@ public class AdminController {
 
     @PostMapping("/{id}")
     public String updateUser(@PathVariable Integer id,@ModelAttribute AccountInfoDto accountInfoDto){
-//        studentService.setStudentInfoById(student,id.longValue());
         return "redirect:/admin/"+id;
     }
 

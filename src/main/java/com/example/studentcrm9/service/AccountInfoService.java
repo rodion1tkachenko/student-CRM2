@@ -1,11 +1,9 @@
 package com.example.studentcrm9.service;
 
-import com.example.studentcrm9.database.entity.Account;
 import com.example.studentcrm9.database.entity.AccountInfo;
 import com.example.studentcrm9.database.enums.Faculty;
 import com.example.studentcrm9.database.enums.Role;
 import com.example.studentcrm9.dto.AccountInfoDto;
-import com.example.studentcrm9.dto.RegistrationDto;
 import com.example.studentcrm9.mapper.AccountInfoMapper;
 import com.example.studentcrm9.repository.AccountInfoRepository;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +22,7 @@ public class AccountInfoService {
 
     public Optional<AccountInfo>save(AccountInfoDto accountInfoDto){
         return Optional.of(accountInfoRepository
-                .save(accountInfoMapper.dtoToAccountInfo(accountInfoDto)));
+                .save(accountInfoMapper.mapToAccountInfo(accountInfoDto)));
     }
 
     public void setRegistrationAttributes(Model model, AccountInfoDto accountInfoDto) {

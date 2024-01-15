@@ -86,7 +86,7 @@ public class StudentService {
                 accountCreateMapper.map(accountDto));
     }
 
-    public String registrationRedirect( RegistrationDto registrationDto,
+    public String registrationRedirect(RegistrationDto registrationDto,
                                        BindingResult bindingResult,
                                        RedirectAttributes redirectAttributes){
         if (bindingResult.hasErrors()) {

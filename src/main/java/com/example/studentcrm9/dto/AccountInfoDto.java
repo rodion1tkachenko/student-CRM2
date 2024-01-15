@@ -9,7 +9,6 @@ import lombok.Builder;
 import lombok.experimental.FieldNameConstants;
 
 
-@FieldNameConstants
 @Builder
 @NoDigitsInNameAndSurname
 public record AccountInfoDto(

@@ -8,11 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.stereotype.Component;
-
-import static org.junit.jupiter.api.Assertions.*;
-
-@Component
 @RequiredArgsConstructor
 @SpringBootTest
 class AccountInfoServiceTest {
@@ -29,7 +24,7 @@ class AccountInfoServiceTest {
 
     @Test
     void successSave() {
-        AccountInfo accountInfo = accountInfoMapper.dtoToAccountInfo(accountInfoDto);
+        AccountInfo accountInfo = accountInfoMapper.mapToAccountInfo(accountInfoDto);
         Assertions.assertEquals(accountInfo, accountInfoService.save(accountInfoDto).get());
     }
     @Test
