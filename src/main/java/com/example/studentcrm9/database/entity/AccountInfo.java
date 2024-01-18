@@ -11,6 +11,7 @@ import lombok.*;
 @EqualsAndHashCode(exclude = "id")
 @ToString(exclude = "id")
 @Entity
+@Builder
 @Table(name = "account_info")
 public class AccountInfo {
 

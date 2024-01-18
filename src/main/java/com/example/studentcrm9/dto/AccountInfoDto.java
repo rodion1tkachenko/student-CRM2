@@ -2,22 +2,20 @@ package com.example.studentcrm9.dto;
 
 import com.example.studentcrm9.database.enums.Faculty;
 import com.example.studentcrm9.database.enums.Role;
-import com.example.studentcrm9.dto.annotations.NoDigitsInNameAndSurname;
+import com.example.studentcrm9.dto.annotations.HasNoDigits;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
 import lombok.Builder;
-import lombok.experimental.FieldNameConstants;
 
 
 @Builder
-@NoDigitsInNameAndSurname
 public record AccountInfoDto(
         Long id,
         @Email String login,
         @Size String password,
         Role role,
-        String firstname,
-        String lastname,
+        @HasNoDigits String firstName,
+        @HasNoDigits String lastName,
         Faculty faculty,
         Integer groupNumber) {
 

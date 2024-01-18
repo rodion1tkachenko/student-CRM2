@@ -25,11 +25,6 @@ public class AccountInfoService {
                 .save(accountInfoMapper.mapToAccountInfo(accountInfoDto)));
     }
 
-    public void setRegistrationAttributes(Model model, AccountInfoDto accountInfoDto) {
-        model.addAttribute("accountInfoDto", accountInfoDto);
-        model.addAttribute("roles", Role.values());
-        model.addAttribute("faculties", Faculty.values());
-    }
 
     public String registrationRedirect(AccountInfoDto accountInfoDto,
                                         BindingResult bindingResult,
@@ -45,7 +40,9 @@ public class AccountInfoService {
         return "redirect:/students";
     }
 
-    private static String redirectToRegistration(AccountInfoDto accountInfoDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+    private static String redirectToRegistration(AccountInfoDto accountInfoDto,
+                                                 BindingResult bindingResult,
+                                                 RedirectAttributes redirectAttributes) {
         redirectAttributes.addFlashAttribute("accountInfoDto", accountInfoDto);
         redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
         return "redirect:/students/registration";

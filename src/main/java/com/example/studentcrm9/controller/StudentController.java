@@ -38,11 +38,18 @@ public class StudentController {
         studentService.setAttributesByAccountId(id, model);
         return "student/student";
     }
+
     @GetMapping("/registration")
     public String registration(Model model,
-                                @ModelAttribute("accountInfoDto") AccountInfoDto accountInfoDto) {
-        accountInfoService.setRegistrationAttributes(model, accountInfoDto);
+                               @ModelAttribute("accountInfoDto") AccountInfoDto accountInfoDto) {
+        setRegistrationAttributes(model, accountInfoDto);
         return "registration/registration";
+    }
+
+    private void setRegistrationAttributes(Model model, AccountInfoDto accountInfoDto) {
+        model.addAttribute("accountInfoDto", accountInfoDto);
+        model.addAttribute("roles", Role.values());
+        model.addAttribute("faculties", Faculty.values());
     }
 
     @PostMapping("/registration")
