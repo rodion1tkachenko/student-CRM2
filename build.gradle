@@ -22,7 +22,7 @@ repositories {
 }
 ext {
     mapstructVersion = "1.5.3.Final"
-    projectLombokVersion = "1.18.24"
+    projectLombokVersion = "1.18.30"
 }
 
 dependencies {

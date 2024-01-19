@@ -6,17 +6,17 @@ import com.example.studentcrm9.dto.annotations.HasNoDigits;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
 import lombok.Builder;
-import lombok.experimental.FieldNameConstants;
+
 
 @Builder
-@FieldNameConstants
-public record RegistrationDto(
+public record AccountInfoDto(
+        Long id,
         @Email String login,
-        @Size(min = 3, max = 32) String password,
+        @Size String password,
         Role role,
         @HasNoDigits String firstName,
         @HasNoDigits String lastName,
         Faculty faculty,
-        Integer group
-) {
+        Integer groupNumber) {
+
 }

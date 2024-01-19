@@ -2,6 +2,7 @@ package com.example.studentcrm9.controller;
 
 import com.example.studentcrm9.database.entity.Student;
 import com.example.studentcrm9.database.enums.Faculty;
+import com.example.studentcrm9.dto.AccountInfoDto;
 import com.example.studentcrm9.service.AccountService;
 import com.example.studentcrm9.service.AdminService;
 import com.example.studentcrm9.service.StudentService;
@@ -29,11 +30,6 @@ public class AdminController {
         model.addAttribute("students", studentService.findAllByFaculty(Faculty.AMM));
         return "/admin/allUsers";
     }
-//    @PostMapping
-//    public String admin(@ModelAttribute("id") Integer id) {
-////        adminService.removeById(id.longValue());
-//        return "redirect:/admin";
-//    }
     @GetMapping("/{id}" )
     public String updateUser(@PathVariable("id")Integer id,
                              Model model)
@@ -43,8 +39,7 @@ public class AdminController {
     }
 
     @PostMapping("/{id}")
-    public String updateUser(@PathVariable Integer id,@ModelAttribute Student student){
-        studentService.setStudentInfoById(student,id.longValue());
+    public String updateUser(@PathVariable Integer id,@ModelAttribute AccountInfoDto accountInfoDto){
         return "redirect:/admin/"+id;
     }
 
