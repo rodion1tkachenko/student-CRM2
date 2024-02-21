@@ -1,17 +1,18 @@
-the task is to create student-crm system. 
+**Задача:**
 
-enabled features: 
--role system
--create user
--login user
--show groupmates at account page
--delete user(enabled only for admin)
+Необходимо реализовать приложение, которое будет представлять собой список студентов по факультетам и группам. При этом оно имеет следующую функциональность: 
+1. Добавить студента, группу и факультет для него
+2. Выводить список всех студентов по факультету, группе
+3. Редактировать информацию о студенте
+4. Удалить студента
+Также следует реализовать функциональность разделения ролей. Для студентов форма логина с регистрацией (со всеми полями и валидацией этих полей)
+Отдельно будет роль admin.  В которой можно редактировать учетные записи
+_______________________
+Я выполнил фичу «создать пользователя» с помощью StudentController. После действительного логина и пароля (проверено Spring Validation)
+Сервисный уровень создает пользователя и перенаправляет на страницу учетной записи, где новичок может видеть его товарищей по группе и посещать их страницу.
 
-I did "create user" feature using StudentController. After valid login and password(checked by Spting Validation)
-service layer creates a user and redirect to account page, where rookie can see him groupmates and visit their page.
+«Логин пользователя» может перенаправляться на страницу администратора или на страницу пользователя в зависимости от входных данных.
+я проверяю входные данные из таблицы, используя данные Spring JPA
 
-"Login user" can redirect at admin's page or user's page depends on input data. 
-i check input data from table using spring data jpa
-
-"delete user" is feature of admin's page. after input student's id(unique for each user) 
-student is removed from table Student Table Account according to CascadeType  
+«Удалить пользователя» — это функция страницы администратора. после ввода идентификатора студента (уникального для каждого пользователя)
+студент удален из таблицы Student и Account в соответствии с CascadeType
